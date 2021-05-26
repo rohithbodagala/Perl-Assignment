@@ -8,9 +8,13 @@
 
 
 use strict;
+use Scalar::Util qw(looks_like_number);
+ print("Enter no.of test cases :\n");
  my $T =<STDIN>;#No.of Test cases
+ looks_like_number($T) or die "No.of test cases should be a number!\nInvalid Input..Try again later...\n";
 for (my $i =0; $i < $T ; $i++)
 {
+  print("Enter a string :\n");
   my $str = <STDIN>;
   chomp $str;
   my @array = split //,$str;
@@ -22,7 +26,8 @@ for (my $i =0; $i < $T ; $i++)
       delete $array[$j];
     }
   }
-  print(@array);
+  print("The string without consecutives characters : ",@array);
+  #print(@array);
   print "\n";
 
 
