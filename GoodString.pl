@@ -26,7 +26,7 @@ for (my $i =0; $i < $T ; $i++)
       delete $array[$j];
     }
   }
-  print("The string without consecutives characters : ",@array);
+  print("The string without same consecutives characters : ",@array);
   #print(@array);
   print "\n";
 
