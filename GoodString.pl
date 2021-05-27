@@ -9,14 +9,66 @@
 
 use strict;
 use Scalar::Util qw(looks_like_number);
- print("Enter no.of test cases :\n");
- my $T =<STDIN>;#No.of Test cases
- looks_like_number($T) or die "No.of test cases should be a number!\nInvalid Input..Try again later...\n";
+sub isValidTestCase{
+  my $T=$_[0];
+  if($T eq ''){
+      warn "Input string can't be empty!\nTry again...\n";
+      return 0;
+  }
+  elsif(!looks_like_number($T)){
+    warn "No.of test cases should be a number!\nTry again...\n";
+    return 0;
+  }
+  elsif($T<=0 or $T>10){
+    warn "No.of Test cases should be between 1 and 10 !\nTry again...\n";
+    return 0;
+ }
+ return 1;
+}
+sub isValidString{
+
+  my $str=$_[0];
+  my $flag=0;
+  my $len=length($str);
+  if($len<=0){
+    warn "The string can't be empty!\n";
+    $flag=1;
+  } 
+  if($len>30){
+    warn "The string should not exceed 30 characters!\n";
+    $flag=1;
+  }
+  if($str=~/[A-Z]/){
+      warn "The string should not contain any Uppercase letters!\n";
+      $flag=1;
+    }
+  if($str=~/[0-9]/){
+    warn "The string should not contain any Numbers!\n";
+    $flag=1;
+  }
+  if($str=~/[^a-zA-Z0-9_]/){
+    warn "The string should not contain any special characters!\n";
+    $flag=1;
+  }
+  if($flag==1){
+    warn "The string should only contain Lower case letters\nTry again...\n";
+    return 0;
+  }
+  return 1;
+}
+Testcases:
+print("Enter no.of test cases : ");
+my $T =<STDIN>;#No.of Test cases
+chomp($T);
+isValidTestCase($T) or goto Testcases;
+
 for (my $i =0; $i < $T ; $i++)
 {
-  print("Enter a string :\n");
+  String:
+  print("Enter a string : ");
   my $str = <STDIN>;
   chomp $str;
+  isValidString($str) or goto String;
   my @array = split //,$str;
   my $len = @array;
   for (my $j=0; $j < $len; $j++)#Deleting consecutive characters in the string 
