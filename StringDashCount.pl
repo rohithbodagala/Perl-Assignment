@@ -11,16 +11,20 @@ sub isValidInput{
     my $str=$_[0];
     my $flag=0;
     my $len=length($str);
-    if($len<=0){
+    if($str eq ''){#Check for empty string
         warn "Input string can't be empty!\n";
         $flag=1;
     } 
-    if($len>100){
+    if($len>100){#Check if length of string exceeds 100 characters
         warn "Input string should not exceed 100 characters!\n";
         $flag=1;
     }
-    if(!looks_like_number($str)){
+    if(!looks_like_number($str)){#check if string is a number
         warn "Input string should be a number!\n";
+        $flag=1;
+    }
+    if(int($str)<0){#Check for negative integer
+        warn "Input should be a positive number!\n";
         $flag=1;
     }
     if($flag==1){

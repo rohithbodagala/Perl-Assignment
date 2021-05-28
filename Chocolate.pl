@@ -10,15 +10,15 @@ use Scalar::Util qw(looks_like_number);
 
 sub isValidTestCase{
   my $T=$_[0];
-    if($T eq ''){
+    if($T eq ''){#Checking for empty String
         warn "Input string can't be empty!\nTry again...\n";
         return 0;
     }
-    elsif(!looks_like_number($T)){
+    elsif(!looks_like_number($T)){#Checking if input is a number
         warn "No.of test cases should be a number!\nTry again...\n";
         return 0;
     }
-    elsif($T<=0 or $T>5){
+    elsif($T<=0 or $T>5){#Checking if testcases are between 1 and 5
         warn "No.of Test cases should be between 1 and 5 !\nTry again...\n";
         return 0;
     }
@@ -27,15 +27,15 @@ sub isValidTestCase{
 sub isValidN{
     my $n=$_[0];
     my $flag=0;
-    if($n eq ''){
+    if($n eq ''){#Checking for empty String
       warn "No.of rooms can't be empty!\n";
       return 0;
     }
-    elsif(!looks_like_number($n)){
+    elsif(!looks_like_number($n)){#Checking if input is a number
         warn "No.of rooms should be a number!\n";
         return 0;
     }
-    elsif($n<=0 or $n>10**2){
+    elsif($n<=0 or $n>10**2){#Checking if n is between 1 and 10^2
         warn "No.of rooms should be between 1 and 10^2 !\n";
         return 0;
     }
@@ -45,15 +45,15 @@ sub isValidN{
 sub isValidK{
     my $k=$_[0];
     $flag=0;
-    if($k eq ''){
+    if($k eq ''){#Checking for empty String
       warn "No.of brands can't be empty!\n";
       return 0;
     }
-    elsif(!looks_like_number($k)){
+    elsif(!looks_like_number($k)){#Checking if input is a number
         warn "No.of brands should be a number!\n";
         return 0;
     }
-    elsif($k<=0 or $k>10**3){
+    elsif($k<=0 or $k>10**3){#Checking if n is between 1 and 10^3
         warn "No.of brands should be between 1 and 10^3 !\n";
         return 0;
     }
@@ -63,15 +63,15 @@ sub isValidK{
 sub isValidP{
     my $p=$_[0];
     $flag=0;
-    if($p eq ''){
+    if($p eq ''){#Checking for empty String
       warn "No.of brands can't be empty!\n";
       return 0;
     }
-    elsif(!looks_like_number($p)){
+    elsif(!looks_like_number($p)){#Checking if input is a number
         warn "No.of brands should be a number!\n";
         return 0;
     }
-    elsif($p<=0 or $p>10**2){
+    elsif($p<=0 or $p>10**2){#Checking if p is between 1 and 10^2
         warn "No.of brands should be between 1 and 10^2 !\n";
         return 0;
     }
@@ -83,12 +83,12 @@ sub isValidRoomData{
     shift(@args);
     my @allchoc=@args;
     my $flag=0;
-    if(looks_like_number($p) and scalar @allchoc!=$p){
+    if(looks_like_number($p) and scalar @allchoc!=$p){#Checkig if p is equal to number of strings in input
         warn "Given Chocolate brands are not equal to no.of chocolate brands that should be in the room!\n";
         $flag=1;
     }
     for(@allchoc){
-        if(length($_)>10 or length($_)<1){
+        if(length($_)>10 or length($_)<1){#Check if length of string is between 1 and 10
             warn "Chocolate brands should have 1 to 10 characters !\n";
             $flag=1;
             last;

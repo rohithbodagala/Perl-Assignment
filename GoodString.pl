@@ -11,15 +11,15 @@ use strict;
 use Scalar::Util qw(looks_like_number);
 sub isValidTestCase{
   my $T=$_[0];
-  if($T eq ''){
+  if($T eq ''){#Check for input string
       warn "Input string can't be empty!\nTry again...\n";
       return 0;
   }
-  elsif(!looks_like_number($T)){
+  elsif(!looks_like_number($T)){#Check if string is a number
     warn "No.of test cases should be a number!\nTry again...\n";
     return 0;
   }
-  elsif($T<=0 or $T>10){
+  elsif($T<=0 or $T>10){#Checking if test cases are between 1 and 10
     warn "No.of Test cases should be between 1 and 10 !\nTry again...\n";
     return 0;
  }
@@ -30,23 +30,23 @@ sub isValidString{
   my $str=$_[0];
   my $flag=0;
   my $len=length($str);
-  if($len<=0){
+  if($len<=0){#Check for empty string
     warn "The string can't be empty!\n";
     $flag=1;
   } 
-  if($len>30){
+  if($len>30){#Check if length of string exceeds 30
     warn "The string should not exceed 30 characters!\n";
     $flag=1;
   }
-  if($str=~/[A-Z]/){
+  if($str=~/[A-Z]/){#Checking for uppercase letters
       warn "The string should not contain any Uppercase letters!\n";
       $flag=1;
     }
-  if($str=~/[0-9]/){
+  if($str=~/[0-9]/){#Checking for numbers
     warn "The string should not contain any Numbers!\n";
     $flag=1;
   }
-  if($str=~/[^a-zA-Z0-9_]/){
+  if($str=~/[^a-zA-Z0-9_]/){#Checking for special characters
     warn "The string should not contain any special characters!\n";
     $flag=1;
   }
